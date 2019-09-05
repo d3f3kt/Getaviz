@@ -325,6 +325,20 @@ public class SettingsConfiguration {
 		return config.getDouble("city.building.vertical_margin", 1.0);
 	}
 
+	public String getTestColorHex() {
+		return config.getString("city.package.test.color_start", "#BCBCBC");
+	}
+
+	public Color getTestColorStart() {
+
+		return getColor(config.getString("city.package.test.color_start", "#BCBCBC"));
+	}
+
+	public Color getTestColorEnd() {
+		return getColor(config.getString("city.package.color_end", "#f0f0f0"));
+	}
+
+
 	public String getPackageColorHex() {
 		return config.getString("city.package.color_start", "#969696");
 	}
@@ -351,6 +365,18 @@ public class SettingsConfiguration {
 
 	public Color getClassColor() {
 		return getColor(config.getString("city.class.color", "#353559"));
+	}
+
+	public String getTestClassColorNeutralHex() {
+		return config.getString("city.class.test.neutral_color", "#9E9E9E");
+	}
+
+	public String getTestClassColorSuccessHex() {
+		return config.getString("city.class.test.success_color", "#89E483");
+	}
+
+	public String getTestClassColorFailedHex() {
+		return config.getString("city.class.test.failed_color", "#E48B83");
 	}
 
 	public Color getCityColor(String name) {

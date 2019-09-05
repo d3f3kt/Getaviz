@@ -25,14 +25,17 @@ public class JQA2City {
 		long model = connector.addNode(
 			String.format("CREATE (n:Model:City {date: \'%s\', building_type: \'%s\'})",
 				new GregorianCalendar().getTime().toString(), config.getBuildingTypeAsString()),"n").id();
+
+		// Only add normal packages as districts
 		connector.executeRead(
 			"MATCH (n:Package) " +
-			"WHERE NOT (n)<-[:CONTAINS]-(:Package) " + 
+			"WHERE NOT (n)<-[:CONTAINS]-(:Package)" +
 			"RETURN n" 
 		).forEachRemaining((result) -> {
 			long namespace = result.get("n").asNode().id();
 			namespaceToDistrict(namespace, model);
 		});
+
 		log.info("JQA2City finished");
 	}
 

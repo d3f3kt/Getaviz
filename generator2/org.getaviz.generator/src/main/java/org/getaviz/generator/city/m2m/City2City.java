@@ -7,6 +7,8 @@ import org.getaviz.generator.city.CityUtils;
 import org.getaviz.generator.SettingsConfiguration.ClassElementsModes;
 import org.getaviz.generator.SettingsConfiguration.Original.BuildingMetric;
 import org.getaviz.generator.SettingsConfiguration.OutputFormat;
+
+import java.awt.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,6 +19,7 @@ import org.apache.commons.logging.LogFactory;
 import org.getaviz.generator.database.DatabaseConnector;
 import org.neo4j.driver.v1.Record;
 import org.neo4j.driver.v1.StatementResult;
+import org.neo4j.driver.v1.exceptions.NoSuchRecordException;
 import org.neo4j.driver.v1.types.Node;
 import org.neo4j.driver.v1.types.Path;
 
@@ -90,20 +93,33 @@ public class City2City {
 				});
 				break;
 			default: {
-			} // CityDebugUtils.infoEntities(cityRoot.document.entities, 0, true, true)	
+			} // CityDebugUtils.infoEntities(cityRoot.document.entities, 0, true, true)
 		}
 		log.info("City2City finished");
 	}
 
 	private void setDistrictAttributes(Path districtPath) {
 		String color = "";
+		long districtId = districtPath.end().id();
+		boolean isTest;
+
+		try {
+			Record packageRecord = connector.executeRead("MATCH (d:District)-[VISUALIZES]->(p:Package) WHERE ID(d) = "+ districtId +" RETURN p")
+					.single();
+			isTest = packageRecord.get("p").asNode().get("fqn").asString().indexOf("test") == 0;
+		}catch (NoSuchRecordException e) {
+			isTest = false;
+		}
+
+
 		if (config.getOutputFormat() == OutputFormat.AFrame) {
-			color = config.getPackageColorHex();
+			color = isTest ?  config.getTestColorHex() : config.getPackageColorHex();
 		} else {
 			color = PCKG_colors.get(districtPath.length() - 1).asPercentage();
 		}
+
 		connector.executeWrite(
-			String.format("MATCH (n) WHERE ID(n) = %d SET n.height = %f, n.color = \'%s\'", districtPath.end().id(),
+			String.format("MATCH (n) WHERE ID(n) = %d SET n.height = %f, n.color = \'%s\'", districtId,
 				config.getHeightMin(), color));
 	}
 
@@ -114,12 +130,67 @@ public class City2City {
 		int dataCounter = connector.executeRead(
 			"MATCH (n)-[:VISUALIZES]->(o)-[:DECLARES]->(f:Field) WHERE ID(n) = " + building.id() +
 				" AND NOT o:Enum RETURN COUNT(f) AS fCount").single().get("fCount").asInt();
-		switch (config.getBuildingType()) {
-			case CITY_ORIGINAL: setBuildingAttributesOriginal(building, methodCounter, dataCounter); break;
-			case CITY_PANELS: setBuildingAttributesPanels(building, methodCounter, dataCounter); break;
-			case CITY_BRICKS: setBuildingAttributesBricks(building, methodCounter, dataCounter); break;
-			case CITY_FLOOR: setBuildingAttributesFloors(building, methodCounter, dataCounter); break;
+
+		Node testNode = getBuildingTestNode(building);
+		if(testNode == null) {
+			switch (config.getBuildingType()) {
+				case CITY_ORIGINAL: setBuildingAttributesOriginal(building, methodCounter, dataCounter); break;
+				case CITY_PANELS: setBuildingAttributesPanels(building, methodCounter, dataCounter); break;
+				case CITY_BRICKS: setBuildingAttributesBricks(building, methodCounter, dataCounter); break;
+				case CITY_FLOOR: setBuildingAttributesFloors(building, methodCounter, dataCounter); break;
+			}
+		}else {
+			setBuildingTestAttributes(building, testNode, methodCounter, dataCounter);
 		}
+	}
+
+	private Node getBuildingTestNode(Node building) {
+		try {
+			Record r = connector.executeRead(
+					"MATCH(b:Building)-[:VISUALIZES]->(c:Class)<-[:TESTS]-(t) WHERE ID(b) = " + building.id() + " RETURN t"
+			).single();
+
+			return r.get("t").asNode();
+		}
+		catch(NoSuchRecordException e) {
+			return null;
+		}
+	}
+
+	private void setBuildingTestAttributes(Node building, Node test, int methodCounter, int dataCounter) {
+		double width = 0.0;
+		double length = 0.0;
+		double height = 0.0;
+		String color = "";
+		if (dataCounter == 0) {
+			width = config.getWidthMin();
+			length = config.getWidthMin();
+		} else {
+			width = dataCounter;
+			length = dataCounter;
+		}
+		if (methodCounter == 0) {
+			height = config.getHeightMin();
+		} else {
+			height = methodCounter;
+		}
+
+		String testColor;
+
+		if(test.get("errors").asInt() == 0 && test.get("failures").asInt() == 0) {
+			testColor = config.getTestClassColorSuccessHex();
+		}else {
+			testColor = config.getTestClassColorFailedHex();
+		}
+
+		if (config.getOriginalBuildingMetric() == BuildingMetric.NOS) {
+			color = new RGBColor(Color.decode(testColor)).asPercentage();
+		} else if (config.getOutputFormat() == OutputFormat.AFrame) {
+			color = testColor;
+		} else {
+			color = new RGBColor(Color.decode(testColor)).asPercentage();
+		}
+		connector.executeWrite(cypherSetBuildingSegmentAttributes(building.id(), width, length, height, color));
 	}
 
 	private void setBuildingAttributesOriginal(Node building, int methodCounter, int dataCounter) {
@@ -171,7 +242,7 @@ public class City2City {
 		} else {
 			width = config.getWidthMin() * areaUnit + config.getPanelHorizontalMargin() * 2;
 			length = config.getWidthMin() * areaUnit + config.getPanelHorizontalMargin() * 2;
-		} 
+		}
 		if (config.getOutputFormat() == OutputFormat.AFrame) {
 			color = config.getClassColorHex();
 		} else {

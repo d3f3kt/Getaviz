@@ -17,7 +17,7 @@ public class DatabaseBuilder {
 	Runtime runtime = Runtime.getRuntime();
 
 	public DatabaseBuilder() {
-		scan();
+		new DatabaseJunitBuilder();
 		enhance();
 	}
 
