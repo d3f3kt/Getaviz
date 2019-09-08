@@ -20,6 +20,7 @@ public class DatabaseJunitBuilder {
         log.info("JUnit enhancement started.");
 
         updateFqn();
+        addTestSuiteRelation();
         addTestRelation();
 
         log.info("JUnit enhancment finished.");
@@ -37,7 +38,12 @@ public class DatabaseJunitBuilder {
                 });
     }
 
-    private void addTestRelation() {
+    private void addTestSuiteRelation() {
         connector.executeWrite("MATCH (c:Class), (t:JUnit) WHERE c.fqn = t.name CREATE (t)-[:TESTS]->(c)");
+    }
+
+    private void addTestRelation() {
+        connector.executeWrite("MATCH (ts:TestSuite)-[:CONTAINS]->(t:TestCase), (c:Class)-[:DECLARES]->(m:Method) " +
+                "WHERE ts.name = c.fqn and t.name = m.name CREATE (t)-[:TESTS]->(m)");
     }
 }

@@ -368,7 +368,7 @@ public class SettingsConfiguration {
 	}
 
 	public String getTestClassColorNeutralHex() {
-		return config.getString("city.class.test.neutral_color", "#9E9E9E");
+		return config.getString("city.class.test.neutral_color", "#C6C6C6");
 	}
 
 	public String getTestClassColorSuccessHex() {

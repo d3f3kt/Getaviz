@@ -26,8 +26,9 @@ public class JUnitTest {
 		mockup.loadProperties("JUnitTest.properties");
 		connector = mockup.getConnector();
 
-		//Generator.run();
-		//new DatabaseBuilder();
+		DatabaseBuilder databaseBuilder = new DatabaseBuilder();
+		databaseBuilder.enhance();
+
 		new JQA2City();
 		new JQA2JSON();
 		new City2City();
