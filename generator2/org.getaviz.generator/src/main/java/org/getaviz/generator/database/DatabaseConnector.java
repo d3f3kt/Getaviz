@@ -1,5 +1,6 @@
 package org.getaviz.generator.database;
 
+import io.github.cdimascio.dotenv.Dotenv;
 import org.neo4j.driver.v1.AccessMode;
 import org.neo4j.driver.v1.Driver;
 import org.neo4j.driver.v1.GraphDatabase;
@@ -15,7 +16,10 @@ public class DatabaseConnector implements AutoCloseable {
 	private static DatabaseConnector instance = null;
 
 	private DatabaseConnector() {
-		URL = "bolt://neo4j:7687";
+		Dotenv dotenv = Dotenv.load();
+
+		URL = dotenv.get("NEO4J_URI", "bolt://localhost:7687");
+
 		driver = GraphDatabase.driver(URL);
 	}
 	
