@@ -16,16 +16,23 @@ import org.getaviz.generator.rd.s2m.JQA2RD;
 public class Generator {
 	private static SettingsConfiguration config = SettingsConfiguration.getInstance();
 	private static Log log = LogFactory.getLog(Generator.class);
+	private DatabaseBuilder databaseBuilder;
 
 	public static void main(String[] args) {
-		run();
+		Generator generator = new Generator();
+		generator.run();
 	}
 
-	public static void run() {
+	public Generator() {
+		databaseBuilder = new DatabaseBuilder();
+	}
+
+	public void run() {
 		log.info("Generator started");
 		try {
 			if(!config.isSkipScan()) {
-				new DatabaseBuilder();
+				databaseBuilder.scan();
+				databaseBuilder.enhance();
 			}
 			switch (config.getMetaphor()) {
 			case CITY: {

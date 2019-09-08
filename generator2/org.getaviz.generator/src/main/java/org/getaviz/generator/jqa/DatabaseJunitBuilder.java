@@ -18,8 +18,11 @@ public class DatabaseJunitBuilder {
 
     public void enhance() {
         log.info("JUnit enhancement started.");
+
         updateFqn();
         addTestRelation();
+
+        log.info("JUnit enhancment finished.");
     }
 
     private void updateFqn() {

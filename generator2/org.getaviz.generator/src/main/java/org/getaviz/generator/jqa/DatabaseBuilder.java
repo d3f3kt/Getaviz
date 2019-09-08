@@ -8,6 +8,7 @@ import java.io.IOException;
 import org.getaviz.generator.database.DatabaseConnector;
 import org.neo4j.driver.v1.Record;
 import org.neo4j.driver.v1.Value;
+import org.neo4j.driver.v1.exceptions.NoSuchRecordException;
 import org.neo4j.driver.v1.types.Node;
 
 public class DatabaseBuilder {
@@ -17,8 +18,6 @@ public class DatabaseBuilder {
 	Runtime runtime = Runtime.getRuntime();
 
 	public DatabaseBuilder() {
-		new DatabaseJunitBuilder();
-		enhance();
 	}
 
 	public void scan() {
@@ -39,11 +38,27 @@ public class DatabaseBuilder {
 	}
 
 	public void enhance() {
+		if(isEnhanced()) {
+			return;
+		}
+
+		new DatabaseJunitBuilder();
 		log.info("jQA enhancement started.");
 		connector.executeWrite(labelGetter(), labelSetter(), labelPrimitives(), labelInnerTypes());
 		connector.executeWrite(labelAnonymousInnerTypes());
 		addHashes();
+
+		connector.executeWrite("CREATE(n:Generator {enhanched: true})");
 		log.info("jQA enhancement finished");
+	}
+
+	private boolean isEnhanced() {
+		try {
+			Record record = connector.executeRead("MATCH (g:Generator) return g").single();
+			return record.get("g").asNode().get("enhanched").asBoolean();
+		}catch (NoSuchRecordException e) {
+			return false;
+		}
 	}
 
 	private void addHashes() {

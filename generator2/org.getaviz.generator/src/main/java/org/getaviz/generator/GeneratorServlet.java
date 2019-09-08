@@ -12,16 +12,23 @@ public class GeneratorServlet extends HttpServlet {
 	private static final long serialVersionUID = -5343549433924172589L;
 	private static Log log = LogFactory.getLog(GeneratorServlet.class);
 
+	private Generator generator;
+
+	public GeneratorServlet() {
+		super();
+
+		generator = new Generator();
+	}
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		log.info("GET request generator");
-		Generator.run();
+		generator.run();
 		writeGetResponse(response);
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) {
 		log.info("POST request generator");
 		SettingsConfiguration config = SettingsConfiguration.getInstance(request);
-		Generator.run();
+		generator.run();
 		writePostResponse(response);
 	}
 	
