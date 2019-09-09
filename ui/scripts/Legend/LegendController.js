@@ -1,5 +1,5 @@
 var legendController = (function() {
-    
+
 	let versionExplorerTreeID = "legendTree";
 	let jQVersionExplorerTree = "#" + versionExplorerTreeID;
 	let tree;
@@ -16,6 +16,11 @@ var legendController = (function() {
         purpleCircle:       "scripts/Legend/images/circle_purple.png",
         yellowCircle:       "scripts/Legend/images/circle_yellow.png",
         lightBlueCircle:    "scripts/Legend/images/circle_blue_light.png",
+        // test circles
+        circleTestPackage:  "scripts/Legend/images/circle_test_package.png",
+        circleTestNeutral:  "scripts/Legend/images/circle_test_neutral.png",
+        circleTestSuccess:  "scripts/Legend/images/circle_test_success.png",
+        circleTestFailed:   "scripts/Legend/images/circle_test_failed.png",
         // cylinders
         blueCylinderHeight: "scripts/Legend/images/cylinder_blue_height.png",
         orangeCylinderHeight: "scripts/Legend/images/cylinder_orange_height.png",
@@ -73,7 +78,7 @@ var legendController = (function() {
     function getFont(treeId, node) {
         return node.glossary ? {'text-decoration':'underline', 'font-style':'italic'} : {};
     }
-    
+
     function prepareTreeView() {
         items = [];
 		controllerConfig.entries.forEach(createItem);
@@ -98,7 +103,7 @@ var legendController = (function() {
             callback: {
                 onClick: zTreeOnClick
             },
-        };		
+        };
         tree = $.fn.zTree.init( $(jQVersionExplorerTree), settings, items);
     }
 

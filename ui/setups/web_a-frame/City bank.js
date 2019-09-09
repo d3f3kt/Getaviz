@@ -179,6 +179,18 @@
                 name: "Type",
                 icon: "purpleCircle",
             }, {
+                name: "Test Package",
+                icon: "circleTestPackage",
+            }, {
+                name: "Test Helper",
+                icon: "circleTestNeutral",
+            }, {
+                name: "Test Succeded",
+                icon: "circleTestSuccess",
+            }, {
+                name: "Test Failed",
+                icon: "circleTestFailed",
+            }, {
                 name: "Navigation",
                 icon: "navigation",
                 entries: [

@@ -24,28 +24,28 @@ var model = (function() {
 	let paths = [];
 	let labels = [];
 
-	function initialize(famixModel) {            
-		//create initial entites from famix elements 
+	function initialize(famixModel) {
+		//create initial entites from famix elements
 		famixModel.forEach(function(element) {
-			
+
 			if(element.type === undefined){
 				console.log("element.type undefined");
 			}
 
 			let entity = createEntity(
-				element.type.substring(element.type.indexOf(".") + 1), 
-				element.id, 
-				element.name, 
-				element.qualifiedName, 
+				element.type.substring(element.type.indexOf(".") + 1),
+				element.id,
+				element.name,
+				element.qualifiedName,
 				element.belongsTo,
                 element.antipattern,
                 element.roles,
 				element.isTransparent,
 				element.version
 			);
-			
+
 			entity.isTransparent = false;
-						
+
 			switch(entity.type) {
 				case "text":
                     entity.versions = element.versions.split(",");
@@ -88,7 +88,7 @@ var model = (function() {
                     	entity.versions[i] = entity.versions[i].trim();
                     }
                     return;
-				case "component": 
+				case "component":
 					entity.components = element.components.split(",");
 					entity.versions = element.versions.split(",");
 					return;
@@ -173,7 +173,7 @@ var model = (function() {
 				case  "ParameterizableClass":
 					entity.superTypes = element.subClassOf.split(",");
 					entity.subTypes = element.superClassOf.split(",");
-					break;			
+					break;
 				case "Attribute":
 					if(element.accessedBy){
 						entity.accessedBy = element.accessedBy.split(",");
@@ -183,14 +183,14 @@ var model = (function() {
 					break;
 				case "Method":
 					entity.signature = element.signature;
-					
+
 					let pathParts = entity.qualifiedName.split("_");
 					let pathString = pathParts[0];
 					let path = pathString.split(".");
 					path = path.splice(0, path.length - 1);
 					let methodSignature = entity.signature.split(" ");
 					methodSignature = methodSignature.splice(1, methodSignature.length);
-					
+
 					entity.qualifiedName = "";
 					path.forEach(function(pathPart){
 						entity.qualifiedName = entity.qualifiedName + pathPart + ".";
@@ -198,9 +198,9 @@ var model = (function() {
 					methodSignature.forEach(function(methodSignaturePart){
 						entity.qualifiedName = entity.qualifiedName + methodSignaturePart + " ";
 					});
-					
+
 					entity.qualifiedName = entity.qualifiedName.trim();
-					
+
 					if(element.calls){
 						entity.calls = element.calls.split(",");
 					} else {
@@ -211,22 +211,22 @@ var model = (function() {
 					} else {
 						entity.calledBy = [];
 					}
-					if(element.accesses){						
+					if(element.accesses){
 						entity.accesses = element.accesses.split(",");
 					} else {
 						entity.accesses = [];
 					}
-					break;				
-				default: 
+					break;
+				default:
 					return;
 			}
-						
+
 			entitiesById.set(element.id, entity);
 		});
 
 		//set object references
 		entitiesById.forEach(function(entity) {
-			
+
 			if(entity.belongsTo === undefined || entity.belongsTo === "root" ){
 				delete entity.belongsTo;
 			} else {
@@ -241,14 +241,14 @@ var model = (function() {
 
 			let superTypes = [];
 			let subTypes = [];
-			
+
 			switch(entity.type) {
 				case "Project":
                 case "text":
                     break;
 				case "issue":
 					break;
-                            
+
                 case "component":
                     let components = [];
                     entity.components.forEach(function(componentId) {
@@ -259,8 +259,8 @@ var model = (function() {
                     });
                     entity.components = components;
                     break;
-                                
-                                
+
+
 				case "Class":
 					superTypes = [];
 					entity.superTypes.forEach(function(superTypeId){
@@ -270,7 +270,7 @@ var model = (function() {
 						}
 					});
 					entity.superTypes = superTypes;
-					
+
 					subTypes = [];
 					entity.subTypes.forEach(function(subTypesId){
 						const relatedEntity = entitiesById.get(subTypesId.trim());
@@ -279,7 +279,7 @@ var model = (function() {
 						}
 					});
 					entity.subTypes = subTypes;
-                                        
+
                     let reaches = [];
 					entity.reaches.forEach(function(reachesId){
 						const relatedEntity = entitiesById.get(reachesId.trim());
@@ -298,7 +298,7 @@ var model = (function() {
 						}
 					});
 					entity.antipattern = antipatterns;
-					
+
 					let roles = [];
 					entity.roles.forEach(function(roleID
 					) {
@@ -309,9 +309,9 @@ var model = (function() {
 						}
 					});
 					entity.roles = roles;
-					
+
 					break;
-				
+
 				case  "ParameterizableClass":
 					superTypes = [];
 					entity.superTypes.forEach(function(superTypeId){
@@ -321,7 +321,7 @@ var model = (function() {
 						}
 					});
 					entity.superTypes = superTypes;
-					
+
 					subTypes = [];
 					entity.subTypes.forEach(function(subTypesId){
 						let relatedEntity = entitiesById.get(subTypesId.trim());
@@ -329,11 +329,11 @@ var model = (function() {
 							subTypes.push(relatedEntity);
 						}
 					});
-					entity.subTypes = subTypes;		
-					
-					break;			
-				
-				case "Attribute":	
+					entity.subTypes = subTypes;
+
+					break;
+
+				case "Attribute":
 					let accessedBy = [];
 					entity.accessedBy.forEach(function(accessedById){
 						let relatedEntity = entitiesById.get(accessedById.trim());
@@ -341,10 +341,10 @@ var model = (function() {
 							accessedBy.push(relatedEntity);
 						}
 					});
-					entity.accessedBy = accessedBy;					
-					
+					entity.accessedBy = accessedBy;
+
 					break;
-				
+
 				case "Method":
 					let calls = [];
 					entity.calls.forEach(function(callsId){
@@ -354,7 +354,7 @@ var model = (function() {
 						}
 					});
 					entity.calls = calls;
-					
+
 					let calledBy = [];
 					entity.calledBy.forEach(function(calledById){
 						let relatedEntity = entitiesById.get(calledById.trim());
@@ -363,7 +363,7 @@ var model = (function() {
 						}
 					});
 					entity.calledBy = calledBy;
-					
+
 					let accesses = [];
 					entity.accesses.forEach(function(accessesId){
 						let relatedEntity = entitiesById.get(accessesId.trim());
@@ -372,10 +372,10 @@ var model = (function() {
 						}
 					});
 					entity.accesses = accesses;
-					
-					break;				
-				
-				default: 				
+
+					break;
+
+				default:
 					return;
 			}
 		});
@@ -384,48 +384,48 @@ var model = (function() {
 		entitiesById.forEach(function(entity) {
 			entity.allParents = getAllParentsOfEntity(entity);
 		});
-		
-						
-						
+
+
+
 		//subscribe for changing status of entities on events
 		let eventArray = Object.keys(states);
 		eventArray.forEach(function(eventName){
-			
+
 			let event = events[eventName];
-			
+
 			let eventMap = new Map();
 			eventEntityMap.set(event, eventMap);
-			
+
 			event.on.subscribe(function(applicationEvent){
 				applicationEvent.entities.forEach(function(entity){
-					entity[event.name] = true;				
+					entity[event.name] = true;
 					eventMap.set(entity.id, entity);
-				});				
-			});		
-			
+				});
+			});
+
 			event.off.subscribe(function(applicationEvent){
 				applicationEvent.entities.forEach(function(entity){
 					entity[event.name] = false;
 					eventMap.delete(entity.id);
 				});
-			});		
+			});
 		});
     }
-	
-	
-	
-	
+
+
+
+
 	function reset(){
 		eventEntityMap.forEach(function(entityMap, eventKey, map){
 			entityMap.forEach(function(entity, entityId){
-				entity[eventKey.name] = false;	
+				entity[eventKey.name] = false;
 			});
-			entityMap.clear();			
+			entityMap.clear();
 		});
 	}
-	
-	
-	
+
+
+
 	function createEntity(type, id, name, qualifiedName, belongsTo){
 		let entity = {
 			type: type,
@@ -433,44 +433,55 @@ var model = (function() {
 			name: name,
 			qualifiedName: qualifiedName,
 			belongsTo: belongsTo,
-			children: []						
+			children: []
 		};
-		
+
 		const statesArray = Object.keys(states);
 		statesArray.forEach(function(stateName){
 			entity[stateName] = false;
 		});
-                
+
 		entitiesById.set(id, entity);
-		
+
 		return entity;
 	}
-	
+
 	function removeEntity(id){
 		entitiesById.delete(id);
 	}
-	
-	
-	
+
+
+
 	function getAllParentsOfEntity(entity){
 		let parents = [];
-		
+
 		if(entity.belongsTo !== undefined && entity.belongsTo !== ""){
 			const parent = entity.belongsTo;
 			parents.push(parent);
-			
+
 			const parentParents = getAllParentsOfEntity(parent);
-			parents = parents.concat(parentParents);			
-		}				
-	
+			parents = parents.concat(parentParents);
+		}
+
 		return parents;
 	}
 
-	
+	function isTestEntity(entity) {
+		let isTest = false;
+		getAllParentsOfEntity(entity).forEach(function(e) {
+			if(e.qualifiedName.indexOf("test") === 0) {
+				isTest = true;
+			}
+		});
+
+		return isTest;
+	}
+
+
 	function getAllEntities(){
 		return entitiesById;
 	}
-	
+
 	function getEntityById(id){
 		return entitiesById.get(id);
 	}
@@ -478,7 +489,7 @@ var model = (function() {
     function getIssuesById(id){
         return issuesById.get(id);
     }
-	
+
 	function getAllVersions() {
             return entitiesByVersion;
 	}
@@ -506,7 +517,7 @@ var model = (function() {
         });
         return entities;
     }
-	
+
 	function getEntitiesByComponent(component) {
             let entities = [];
             entitiesById.forEach(function(entity) {
@@ -561,7 +572,7 @@ var model = (function() {
             });
             return entities;
         }
-        
+
     function removeVersion(version) {
         const index = selectedVersions.indexOf(version);
         if (index > -1) {
@@ -575,7 +586,7 @@ var model = (function() {
             selectedIssues.splice(index, 1);
         }
     }
-        
+
     function addVersion(version) {
         selectedVersions.push(version);
     }
@@ -583,11 +594,11 @@ var model = (function() {
     function addIssue(issue) {
 		selectedIssues.push(issue);
 	}
-	
+
 	function getEntitiesByState(stateEventObject){
 		return eventEntityMap.get(stateEventObject);
 	}
-	
+
 	function getEntitiesByVersion(versionId){
         return entitiesByVersion.get(versionId);
     }
@@ -611,16 +622,16 @@ var model = (function() {
     function getLabels(){
 	    return labels;
     }
-	
+
 	function getSelectedVersions() {
 		return selectedVersions;
 	}
-	
+
 	return {
         initialize					: initialize,
 		reset						: reset,
 		states						: states,
-		
+
 		getAllEntities				: getAllEntities,
         getAllSecureEntities        : getAllSecureEntities,
         getAllCorrectEntities       : getAllCorrectEntities,
@@ -637,7 +648,9 @@ var model = (function() {
         getIssuesById               : getIssuesById,
 		createEntity				: createEntity,
 		removeEntity				: removeEntity,
-		
+
+		isTestEntity				: isTestEntity,
+
 		addVersion                  : addVersion,
 		removeVersion               : removeVersion,
 		addIssue					: addIssue,
@@ -648,5 +661,5 @@ var model = (function() {
 		getRoleBetween				: getRoleBetween,
         getLabels                   : getLabels
     };
-	
+
 })();
