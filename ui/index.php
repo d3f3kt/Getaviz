@@ -62,10 +62,10 @@ EOT;
         $canvas = <<<EOT
         <x3d id="x3dElement" showConsole="true">
 			<scene id="scene">
-								
+
 				<Transform id="addedElements"></Transform>
-				
-				<MultiPart id="multiPart" mapDEFToID="true" url="$multipartX3dUrl" urlIDMap="$multipartJsonUrl"></MultiPart>							
+
+				<MultiPart id="multiPart" mapDEFToID="true" url="$multipartX3dUrl" urlIDMap="$multipartJsonUrl"></MultiPart>
 
 			</scene>
 		</x3d>
@@ -90,13 +90,13 @@ EOT;
 	<title>Getaviz</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <link rel="icon" type="image/vnd.microsoft.icon" href="favicon.ico">
-	
+
     <!--Main-->
     <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="node_modules/typeahead.js/dist/typeahead.bundle.min.js"></script>    
+    <script type="text/javascript" src="node_modules/typeahead.js/dist/typeahead.bundle.min.js"></script>
     <script type="text/javascript" src="node_modules/handlebars/dist/handlebars.min.js"></script>
 
-	<!--jqwidgets-->	
+	<!--jqwidgets-->
     <script type="text/javascript" src="node_modules/jqwidgets-scripts/jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="node_modules/jqwidgets-scripts/jqwidgets/jqxdata.js"></script>
     <script type="text/javascript" src="node_modules/jqwidgets-scripts/jqwidgets/jqxbuttons.js"></script>
@@ -121,7 +121,7 @@ EOT;
     <script type="text/javascript" src="node_modules/jqwidgets-scripts/jqwidgets/jqxnumberinput.js"></script>
     <script type="text/javascript" src="node_modules/jqwidgets-scripts/jqwidgets/jqxform.js"></script>
     <script type="text/javascript" src="node_modules/jqwidgets-scripts/jqwidgets/jqxvalidator.js"></script>
-	
+
     <link rel="stylesheet" href="node_modules/jqwidgets-scripts/jqwidgets/styles/jqx.base.css" type="text/css" />
     <link rel="stylesheet" href="node_modules/jqwidgets-scripts/jqwidgets/styles/jqx.metro.css" type="text/css" />
     <!-- ztree -->
@@ -130,16 +130,16 @@ EOT;
     <script type="text/javascript" src="node_modules/@ztree/ztree_v3/js/jquery.ztree.excheck.min.js"></script>
     <link rel="stylesheet" href="node_modules/@ztree/ztree_v3/css/metroStyle/metroStyle.css" type="text/css">
     <link rel="stylesheet" href="scripts/PackageExplorer/zt.css" type="text/css">
-	
+
 	<script type="text/javascript" src="scripts/CanvasFilter/CanvasFilterController.js"></script>
 	<script type="text/javascript" src="scripts/CanvasMark/CanvasMarkController.js"></script>
 	<script type="text/javascript" src="scripts/CanvasFlyTo/CanvasFlyToController.js"></script>
 	<script type="text/javascript" src="scripts/CanvasSelect/CanvasSelectController.js"></script>
-	<script type="text/javascript" src="scripts/CanvasResetView/CanvasResetViewController.js"></script>	
-	<script type="text/javascript" src="scripts/CanvasGrid/CanvasGridController.js"></script>	
+	<script type="text/javascript" src="scripts/CanvasResetView/CanvasResetViewController.js"></script>
+	<script type="text/javascript" src="scripts/CanvasGrid/CanvasGridController.js"></script>
 	<script type="text/javascript" src="scripts/RelationTransparency/RelationTransparencyController.js"></script>
-	<script type="text/javascript" src="scripts/RelationHighlight/RelationHighlightController.js"></script>	
-	<script type="text/javascript" src="scripts/PackageExplorer/PackageExplorerController.js"></script>	
+	<script type="text/javascript" src="scripts/RelationHighlight/RelationHighlightController.js"></script>
+	<script type="text/javascript" src="scripts/PackageExplorer/PackageExplorerController.js"></script>
 	<script type="text/javascript" src="scripts/Search/SearchController.js"></script>
 	<script type="text/javascript" src="scripts/Experiment/ExperimentController.js"></script>
 	<script type="text/javascript" src="scripts/SourceCode/SourceCodeController.js"></script>
@@ -149,12 +149,13 @@ EOT;
 	<script type="text/javascript" src="scripts/Menu/MenuController.js"></script>
 	<script type="text/javascript" src="scripts/Legend/LegendController.js"></script>
     <script type="text/javascript" src="scripts/Systeminfo/SysteminfoController.js"></script>
+    <script type="text/javascript" src="scripts/JUnitInfo/JUnitInfoController.js"></script>
     <script type="text/javascript" src="scripts/PatternConnector/PatternConnectorController.js"></script>
     <script type="text/javascript" src="scripts/Configuration/ConfigurationController.js"></script>
     <script type="text/javascript" src="scripts/PatternExplorer/PatternExplorerController.js"></script>
     <script type="text/javascript" src="scripts/VersionExplorer/VersionExplorerController.js"></script>
     <script type="text/javascript" src="scripts/IssueExplorer/IssueExplorerController.js"></script>
-    
+
      <!-- filter -->
     <script type="text/javascript" src="scripts/Filter/Helpers/Constants.js"></script>
     <script type="text/javascript" src="scripts/Filter/Helpers/DOMHelper.js"></script>
@@ -168,7 +169,8 @@ EOT;
 
     <!--user interface-->
 	<script type="text/javascript" src="scripts/DefaultLogger.js"></script>
-	<script type="text/javascript" src="scripts/Model.js"></script>	
+	<script type="text/javascript" src="scripts/Model.js"></script>
+	<script type="text/javascript" src="scripts/JUnit.js"></script>
 	<script type="text/javascript" src="scripts/Events.js"></script>
 
     <?php echo $loadVisualizationSpecificScripts; ?>
@@ -177,7 +179,7 @@ EOT;
 
     <link rel="stylesheet" href="Style.css" type="text/css" />
 
-	<!--setup-->	
+	<!--setup-->
 	<script type="text/javascript" src="<?php echo $setupUrl; ?>"></script>
 
 </head>

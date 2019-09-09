@@ -2,39 +2,39 @@
 
 	loadPopUp: true,
 
-		
-	controllers: [	
+
+	controllers: [
 
 		{ 	name: 	"defaultLogger",
 
 			logInfoConsole		: false,
 			logActionConsole	: false,
 			logEventConsole		: false
-		},	
-		
+		},
+
 		{	name:	"emailController",
-		
+
 			createHeadSection: false
-		},	
-		
+		},
+
 		{	name:	"generationFormController",
 		},
 
-		{	name: 	"canvasHoverController",			
-		},	
+		{	name: 	"canvasHoverController",
+		},
 
 		{	name: 	"canvasMarkController",
-		},	
-		
-		{	name: 	"canvasSelectController" 
-		},	
-
-		{	name: 	"canvasFilterController" 
 		},
 
-		{ 	name: 	"canvasFlyToController" 
+		{	name: 	"canvasSelectController"
 		},
-		{	name: 	"searchController" 
+
+		{	name: 	"canvasFilterController"
+		},
+
+		{ 	name: 	"canvasFlyToController"
+		},
+		{	name: 	"searchController"
 		},
 
 		{	name: 	"packageExplorerController",
@@ -42,6 +42,9 @@
 		{	name: 	"sourceCodeController",
             url:    "https://raw.githubusercontent.com/softvis-research/Bank/master/src/"
 		},
+        {
+            name: "junitInfoController"
+        },
         { 	name: 	"relationConnectorController",
             fixPositionY : false,
             showInnerRelations : true,
@@ -53,8 +56,8 @@
         },
 		{ 	name: 	"relationTransparencyController",
 		},
-			
-		{ 	name: 	"relationHighlightController" 
+
+		{ 	name: 	"relationHighlightController"
 		},
         {
             name:   "systeminfoController",
@@ -66,15 +69,15 @@
 		{	name: 	"menuController",
 			menuMapping: [
 
-				{	
+				{
 					title:		"View",
 					subMenu:	true,
 					items:		[
 						{
 							title: 		"FlyTo",
-							toggle: 	true,	
+							toggle: 	true,
 							eventOn: 	"canvasFlyToController.activate",
-							eventOff: 	"canvasFlyToController.deactivate",									
+							eventOff: 	"canvasFlyToController.deactivate",
 						},
 
 						{
@@ -84,32 +87,32 @@
 					]
 				},
 
-				{	
+				{
 					title:		"Relations",
 					subMenu:	true,
 					items:		[
 						{
 							title: 		"Relation Connectors",
-							toggle: 	true,	
+							toggle: 	true,
 							eventOn: 	"relationConnectorController.activate",
-							eventOff: 	"relationConnectorController.deactivate",			
+							eventOff: 	"relationConnectorController.deactivate",
 						},
 						{
 							title: 		"Relation Transparency",
-							toggle: 	true,	
+							toggle: 	true,
 							eventOn: 	"relationTransparencyController.activate",
-							eventOff: 	"relationTransparencyController.deactivate",			
+							eventOff: 	"relationTransparencyController.deactivate",
 						},
 						{
 							title: 		"Relation Highlight",
-							toggle: 	true,	
+							toggle: 	true,
 							eventOn: 	"relationHighlightController.activate",
-							eventOff: 	"relationHighlightController.deactivate",			
+							eventOff: 	"relationHighlightController.deactivate",
 						},
 					]
 				},
 
-				{	
+				{
 					title:		"Visualizations",
 					subMenu:	true,
 					items:		[
@@ -130,14 +133,14 @@
 					]
 				},
 
-				{	
+				{
 					title:		"About",
 					subMenu:	true,
 					items:		[
 						{
 							title: 	"University Leipzig",
 							link: 	true,
-							url:	"https://www.wifa.uni-leipzig.de/en/information-systems-institute/se/research/softwarevisualization-in-3d-and-vr.html"							
+							url:	"https://www.wifa.uni-leipzig.de/en/information-systems-institute/se/research/softwarevisualization-in-3d-and-vr.html"
 						},
 						{
 							title: 		"Feedback!",
@@ -147,7 +150,7 @@
 							title: 		"Impressum",
 							popup:		true,
 							text: 		"<b>Universität Leipzig</b><br\/\>"+
-										" <br\/\>"+										
+										" <br\/\>"+
 										"Wirtschaftswissenschaftliche Fakultät<br\/\>"+
 										"Institut für Wirtschaftsinformatik<br\/\>"+
 										"Grimmaische Straße 12<br\/\>"+
@@ -164,7 +167,7 @@
                             url:	"http://home.uni-leipzig.de/svis/privacy-policy/"
                         }
 					]
-				},			
+				},
 			]
 		},
         {
@@ -193,9 +196,9 @@
             ],
         }
 	],
-	
-	
-	
+
+
+
 
 	uis: [
 
@@ -226,7 +229,7 @@
                         {name: "menuController"},
                         //{name: "searchController"},
                         {name: "emailController"},
-						{name: "generationFormController"}	
+						{name: "generationFormController"}
                     ],
                 },
                 second: {
@@ -332,9 +335,9 @@
                                         orientation: "horizontal",
                                         collapsible: false,
                                         name: "rightPael",
-                                        size: "80%",
+                                        size: "50%",
                                         first: {
-                                            size: "80%",
+                                            size: "50%",
                                             min: "200",
                                             oriontation: "horizontal",
                                             expanders: [
@@ -348,18 +351,40 @@
                                             ],
                                         },
                                         second: {
-                                            size: "20%",
-                                            min: "200",
-                                            oriontation: "horizontal",
-                                            expanders: [
-                                                {
-                                                    name: "systeminfo",
-                                                    title: "Info",
-                                                    controllers: [
-                                                        {name: "systeminfoController"}
+                                            area: {
+                                                orientation: "horizontal",
+                                                collapsible: false,
+                                                name: "rightPanel",
+                                                size: "80%",
+                                                first: {
+                                                    size: "60%",
+                                                    min: "200",
+                                                    oriontation: "horizontal",
+                                                    expanders: [
+                                                        {
+                                                            name: "junitinfo",
+                                                            title: "JUnit Info",
+                                                            controllers: [
+                                                                {name: "junitInfoController"}
+                                                            ],
+                                                        },
                                                     ],
                                                 },
-                                            ],
+                                                second: {
+                                                    size: "20%",
+                                                    min: "200",
+                                                    oriontation: "horizontal",
+                                                    expanders: [
+                                                        {
+                                                            name: "systeminfo",
+                                                            title: "Info",
+                                                            controllers: [
+                                                                {name: "systeminfoController"}
+                                                            ],
+                                                        },
+                                                    ],
+                                                }
+                                            }
                                         }
                                     }
                                 }

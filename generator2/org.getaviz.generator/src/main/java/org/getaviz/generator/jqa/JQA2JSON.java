@@ -21,8 +21,12 @@ public class JQA2JSON {
 	Log log = LogFactory.getLog(this.getClass());
 	DatabaseConnector connector = DatabaseConnector.getInstance();
 
+	JUnit2JSON jUnit2JSON;
+
 	public JQA2JSON() {
 		log.info("JQA2JSON has started.");
+		jUnit2JSON = new JUnit2JSON();
+
 		ArrayList<Node> elements = new ArrayList<>();
 		connector.executeRead("MATCH (n)<-[:VISUALIZES]-() RETURN n ORDER BY n.hash").forEachRemaining((result) -> {
 			elements.add(result.get("n").asNode());
@@ -47,6 +51,7 @@ public class JQA2JSON {
 
 	private String toJSON(List<Node> list) {
 		StringBuilder builder = new StringBuilder();
+		builder.append("{ \"entities\": ");
 		boolean hasElements = false;
 		for (final Node el : list) {
 			if (!hasElements) {
@@ -86,6 +91,12 @@ public class JQA2JSON {
 		if (hasElements) {
 			builder.append("}]");
 		}
+
+		builder.append(", \"tests\": ");
+		builder.append(jUnit2JSON.getJunitJson());
+
+		builder.append("}");
+
 		return builder.toString();
 	}
 

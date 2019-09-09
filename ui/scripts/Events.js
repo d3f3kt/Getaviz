@@ -1,6 +1,6 @@
 var events = (function() {
 
-	
+
 	//events
 	let events = { };
 
@@ -9,14 +9,14 @@ var events = (function() {
     //state events
     //***************
 	const statesArray = Object.keys(model.states);
-	
+
 	statesArray.forEach(function(stateName){
-	
+
 		let state = model.states[stateName];
-		
+
 		let on = {
 			name : "on" + state.name.charAt(0).toUpperCase() + state.name.slice(1) + "Event",
-			
+
 			subscribe : function(listener){
 				subscribeEvent(this, listener);
 			},
@@ -24,15 +24,15 @@ var events = (function() {
 			unsubscribe: function(listener){
 				unsubscribeEvent(this, listener);
 			},
-			
+
 			publish	: function(applicationEvent){
-				publishStateEvent(this, applicationEvent);				
-			}	
+				publishStateEvent(this, applicationEvent);
+			}
 		};
-		
+
 		let off = {
 			name : "off" + state.name + "Event",
-			
+
 			subscribe : function(listener){
 				subscribeEvent(this, listener);
 			},
@@ -40,12 +40,12 @@ var events = (function() {
 			unsubscribe: function(listener){
 				unsubscribeEvent(this, listener);
 			},
-			
+
 			publish	: function(applicationEvent){
-				publishStateEvent(this, applicationEvent);		
-			}			
+				publishStateEvent(this, applicationEvent);
+			}
 		};
-		
+
 		events[stateName] = {
 			name 			: stateName,
 			on 				: on,
@@ -56,7 +56,7 @@ var events = (function() {
 		};
 	});
 
-	
+
 
     //**************
     //log events
@@ -70,7 +70,7 @@ var events = (function() {
 		action			: { name: "action"},
 		event			: { name: "event"},
 		manipulation	: { name: "manipulation"},
-	};	
+	};
 
 	events.log = {};
 
@@ -78,25 +78,26 @@ var events = (function() {
 
 	logTypeArray.forEach(function(logTypeName){
 		const logType = logTypes[logTypeName];
-		
+
 		const log = {
 			type : "log" + logType.name.charAt(0).toUpperCase() + logType.name.slice(1) + "Event",
-			
+
 			subscribe : function(listener){
 				subscribeEvent(this, listener);
 			},
-			
+
 			publish	: function(logEvent){
-								
-				//no listener subscribed? 
-				//-> endless loop warning 
-				//-> output on console 
+
+				//no listener subscribed?
+				//-> endless loop warning
+				//-> output on console
 				let eventListenerArray = eventMap.get(this);
 				if(eventListenerArray === undefined){
+					console.trace();
 					if(logEvent.text){
-						console.log("NO LOGGER for " + this.type + " subscribed! - " + logEvent.text); 
+						console.log("NO LOGGER for " + this.type + " subscribed! - " + logEvent.text);
 					} else {
-						console.log("NO LOGGER for " + this.type + " subscribed!"); 
+						console.log("NO LOGGER for " + this.type + " subscribed!");
 					}
 					return;
 				}
@@ -117,22 +118,22 @@ var events = (function() {
 
 	const buttonClick = {
 		type : "buttonClickEvent",
-		
+
 		subscribe : function(listener){
 			subscribeEvent(this, listener);
 		},
-		
+
 		publish	: function(logEvent){
 			publishEvent(this, logEvent);
 		}
 	};
 
 	events.ui.buttonClick = buttonClick;
-	
+
 	//**************
     //Config events
     //**************
-	
+
 	const configTypes = {
 		weight				: { name: "weight"},
 		innerClasses		: { name: "innerClasses"},
@@ -145,25 +146,25 @@ var events = (function() {
 
 	configTypeArray.forEach(function(configTypeName){
 		const configType = configTypes[configTypeName];
-	
+
 		const config = {
 			type : "config" + configType.name.charAt(0).toUpperCase() + configType.name.slice(1) + "Event",
-			
+
 			subscribe : function(listener){
 				subscribeEvent(this, listener);
 			},
-			
+
 			publish	: function(logEvent){
-								
-				//no listener subscribed? 
-				//-> endless loop warning 
-				//-> output on console 
+
+				//no listener subscribed?
+				//-> endless loop warning
+				//-> output on console
 				let eventListenerArray = eventMap.get(this);
 				if(eventListenerArray === undefined){
 					if(logEvent.text){
-						console.log("NO LOGGER for " + this.type + " subscribed! - " + logEvent.text); 
+						console.log("NO LOGGER for " + this.type + " subscribed! - " + logEvent.text);
 					} else {
-						console.log("NO LOGGER for " + this.type + " subscribed!"); 
+						console.log("NO LOGGER for " + this.type + " subscribed!");
 					}
 					return;
 				}
@@ -173,45 +174,45 @@ var events = (function() {
 
 		events.config[configTypeName] = config;
 	});
-	
+
 	//event to listener map
 	let eventMap = new Map();
-	
+
 	//event to model listener map
 	let eventModelMap = new Map();
-	
+
 	function subscribeEvent(eventType, listener) {
-		
+
 		if(!eventType in events){
-			events.log.error.publish({ text: "event " + eventType.name +" not in events"});		
+			events.log.error.publish({ text: "event " + eventType.name +" not in events"});
 			return;
-		}		
-		
+		}
+
 		let eventListenerArray = eventMap.get(eventType);
-			
+
 		if(eventListenerArray === undefined){
 			eventListenerArray = [];
 			eventMap.set(eventType, eventListenerArray);
-			
+
 			eventModelMap.set(eventType, listener);
 			return;
 		}
-		
+
 		if(listener in eventListenerArray){
 			events.log.warning.publish({ text: "listener already subscribes"});
 			return;
-		} 
-		
-		eventListenerArray.push(listener);		
+		}
+
+		eventListenerArray.push(listener);
 	}
 
 
 	function unsubscribeEvent(eventType, listener){
 
 		if(!eventType in events){
-			events.log.error.publish({ text: "event " + eventType.name +" not in events"});		
+			events.log.error.publish({ text: "event " + eventType.name +" not in events"});
 			return;
-		}	
+		}
 
 		let eventListenerArray = eventMap.get(eventType);
 		if(eventListenerArray === undefined || !listener in eventListenerArray){
@@ -228,39 +229,39 @@ var events = (function() {
 		events.log.event.publish({ eventTypeName: eventType.name, applicationEvent: applicationEvent});
 
 		try{
-			publishEvent(eventType, applicationEvent);		
+			publishEvent(eventType, applicationEvent);
 		} catch(exception){
 			events.log.error.publish({text: exception + "[" + exception.fileName + "-" + exception.lineNumber + "-" + exception.columnNumber + "]" });
 		}
 	}
 
-	
+
 	function publishEvent(eventType, applicationEvent){
-						
+
 		let eventListenerArray = eventMap.get(eventType);
-		
+
 		if(eventListenerArray === undefined){
 			events.log.warning.publish({ text: "no listener subscribed"});
 			return;
 		}
-		
+
 		applicationEvent.eventType = eventType;
 		applicationEvent.timeStamp = Date.now();
 
 		//publish to listeners
 		eventListenerArray.forEach(function(listener){
 			try{
-				listener(applicationEvent);	
+				listener(applicationEvent);
 			} catch(exception){
 				events.log.error.publish({text: exception + "[" + exception.fileName + "-" + exception.lineNumber + "-" + exception.columnNumber + "]" });
 			}
 		});
-		
+
 		//change state of entity
-		eventModelMap.get(eventType)(applicationEvent);		
+		eventModelMap.get(eventType)(applicationEvent);
 	}
-		
+
 
 	return events;
-	
+
 })();
