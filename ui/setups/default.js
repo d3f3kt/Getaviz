@@ -41,7 +41,7 @@
 		{	name: 	"packageExplorerController",
 		},
 		{	name: 	"sourceCodeController",
-            url: "https://raw.githubusercontent.com/softvis-research/Bank/master/src/"
+            url: "https://raw.githubusercontent.com/d3f3kt/blog-junit-testing/master/src/"
 		},
 
 		{ 	name: 	"relationConnectorController",
@@ -62,9 +62,8 @@
         {
             name:   "systeminfoController",
             system: "Bank",
-            link: "https://github.com/softvis-research/Bank",
+            link: "https://github.com/d3f3kt/blog-junit-testing",
             noc: true,
-            loc: 192
         },
         {
             name: "junitInfoController"
@@ -120,18 +119,24 @@
 					subMenu:	true,
 					items:		[
 						{
-							title: 	"City Original",
+							title: 	"Junit City-Default",
 							link: 	true,
 							url:	"index.php?setup=web_a-frame/City bank&model=City%20bank%20aframe&aframe=true"
 						},
-						{
-							title: 	"Recursive Disk",
-							link: 	true,
-							url:	"index.php?setup=web/RD bank&model=RD%20bank"
-						},
                         {
-                            title: 	"New Visualization",
-                            event:	"generationFormController.openSettingsPopUp"
+                            title: 	"Junit City-Default (before)",
+                            link: 	true,
+                            url:	"index.php?setup=web_a-frame/City bank&model=City%20bank%20aframe&aframe=true"
+                        },
+                        {
+                            title: 	"Junit City-Panels",
+                            link: 	true,
+                            url:	"index.php?setup=web_a-frame/City bank&model=City%20bank%20aframe&aframe=true"
+                        },
+                        {
+                            title: 	"Junit City-Panels (before)",
+                            link: 	true,
+                            url:	"index.php?setup=web_a-frame/City bank&model=City%20bank%20aframe&aframe=true"
                         },
 					]
 				},

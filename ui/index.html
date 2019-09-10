@@ -2,15 +2,18 @@
 <!--
 	TODO in application auslagern
 -->
+<script>
+	var visMode = "aframe";
+</script>
 <script type="text/javascript">
-	var modelUrl = "data/RD bank/model";
+	var modelUrl		 = "data/JUnit-default/model";
 
-	var multipartX3dUrl  = modelUrl + "/multiPart.x3d";
-	var multipartJsonUrl = modelUrl + "/multiPart.json";
-	var metaDataJsonUrl  = modelUrl + "/metaData.json";
+	var multipartX3dUrl  = "";
+	var multipartJsonUrl = "";
+	var metaDataJsonUrl  = "data/JUnit-default/model/metaData.json";
 
-    var canvasId = "x3dom-x3dElement-canvas";
-    var visMode = "x3dom";
+	var canvasId = "aframe-canvas";
+	var visMode = "aframe";
 </script>
 
 <html>
@@ -120,17 +123,16 @@
   <script type="text/javascript" src="scripts/Filter/FilterController.js"></script>
 
 	<!--setup-->
-	<script type="text/javascript" src="setups/web/RD bank.js"></script>
+	<script type="text/javascript" src="setups/web_a-frame/junitDemo.js"></script>
 </head>
 <body>
 	<div id="canvas">
-		<x3d id="x3dElement" showConsole="true">
-			<scene id="scene">
-				<Transform id="addedElements"></Transform>
-				<MultiPart id="multiPart" mapDEFToID="true" url="data/RD bank/model/multiPart.x3d" urlIDMap="data/RD bank/model/multiPart.json"></MultiPart>
-			</scene>
-		</x3d>
-    </div>
-
+        <script>
+            $(function(){
+                $("#canvas").load(encodeURI("data/JUnit-default/model" + "/model.html"));
+            });
+            var globalCamera;
+        </script>
+	</div>
 </body>
 </html>

@@ -11,19 +11,19 @@
         $srcDir = $_GET["srcDir"];
     }
 
-	$setupUrl = "setups/default.js";
+	$setupUrl = "setups/web_a-frame/junitDemo.js";
 	if (isset($_GET["setup"])) {
 		$setupUrl = "setups/" . $_GET["setup"] . ".js";
 	}
 
-	$modelUrl = "data/RD bank/model";
+	$modelUrl = "data/JUnit-default";
 	if (isset($_GET["model"])) {
-		$modelUrl = $srcDir . "/" . $_GET["model"] ."/model";
+		$modelUrl = $srcDir . "/" . $_GET["model"] ."";
 	}
 
     $metaDataJsonUrl = $modelUrl . "/metaData.json";
 
-    if (isset($_GET["aframe"]) && $_GET["aframe"] == 'true') {
+    if (!isset($_GET["aframe"]) || $_GET["aframe"] == 'true') {
         $loadFramework = "<script src=\"node_modules/aframe/dist/aframe-v0.9.1.min.js\"></script>";
         $loadVisualizationSpecificScripts = <<<'EOT'
         <script src="node_modules/aframe/dist/aframe-v0.9.1.min.js"></script>

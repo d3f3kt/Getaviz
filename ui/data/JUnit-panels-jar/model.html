@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html>
+	 <head>
+		 <meta charset="utf-8">
+	    <title>Ring</title>
+	    <meta name="description" content="Getaviz">
+	 </head>
+	 <body>
+		 <a-scene id="aframe-canvas"
+	    	 light="defaultLightsEnabled: false"
+	    	 cursor="rayOrigin: mouse"
+	    	 embedded="true"
+	    >
+		    <a-entity
+		    	 id="camera"
+		    	 camera="fov: 80; zoom: 1;"
+		    	 position="44.0 20.0 44.0"
+		    	rotation="0 -90 0"
+		    	 orbit-camera="
+		    	   	 target: 15.0 1.5 15.0;
+		    	   	 enableDamping: true;
+		    	   	 dampingFactor: 0.25;
+		    	   	 rotateSpeed: 0.25;
+		    	   	 panSpeed: 0.25;
+		    	   	 invertZoom: true;
+		    	   	 logPosition: false;
+		    	   	 minDistance:0;
+		    	   	 maxDistance:1000;
+		    	   	 "
+		    	 mouse-cursor=""
+		   		 >
+		     </a-entity>
+<a-box id="ID_5fb552a76ef3c7ee67681d80e9797e088a6c9859"
+	 position="15.5 1.5 15.5"
+	 width="25.0"
+	 height="1.0"
+	 depth="25.0"
+	 color="#969696"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+<a-box id="ID_ae8f84c90478f066b340a1dc64bfbf21789bc9b6"
+	 position="15.5 2.5 15.5"
+	 width="19.0"
+	 height="1.0"
+	 depth="19.0"
+	 color="#969696"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+<a-box id="ID_cbc2bbb51b6b161ced7cf4ca3da7ab9779bb2c60"
+	 position="13.0 3.5 15.5"
+	 width="8.0"
+	 height="1.0"
+	 depth="13.0"
+	 color="#969696"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+<a-box id="ID_c43e47c7653f2cba29c80080799083b1d2660156"		 position="13.0 4.5 13.0"
+		 width="2.0"
+		 height="1.0"
+		 depth="2.0"
+		 color="#353559"
+		 shader="flat"
+		 flat-shading="true">
+</a-box>
+<a-box id="ID_25194ae448eb43043887af67a1a1852021b471d1"		 position="13.0 4.5 18.0"
+		 width="2.0"
+		 height="1.0"
+		 depth="2.0"
+		 color="#353559"
+		 shader="flat"
+		 flat-shading="true">
+</a-box>
+<a-box id="ID_c72699ff32605084657e07ce45273d2c2a91cfd9"		 position="21.0 3.5 10.0"
+		 width="2.0"
+		 height="1.0"
+		 depth="2.0"
+		 color="#353559"
+		 shader="flat"
+		 flat-shading="true">
+</a-box>
+<a-box id="ID_5fff4df979aa46efa6585a82b3f504a3d657e69e"		 position="21.0 3.5 15.0"
+		 width="2.0"
+		 height="1.0"
+		 depth="2.0"
+		 color="#353559"
+		 shader="flat"
+		 flat-shading="true">
+</a-box>
+<a-box id="ID_3686bdf5cacc7fd2d461abc91c79a739c715d14a"
+	 position="13.0 6.5 13.0"
+	 width="1.0"
+	 height="0.5"
+	 depth="1.0"
+	 color="#99FFCC"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_3686bdf5cacc7fd2d461abc91c79a739c715d14a"
+	 position="13.0 6.1875 13.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_3686bdf5cacc7fd2d461abc91c79a739c715d14a"
+	 position="13.0 5.6875 18.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_3686bdf5cacc7fd2d461abc91c79a739c715d14a"
+	 position="21.0 4.6875 10.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_3686bdf5cacc7fd2d461abc91c79a739c715d14a"
+	 position="21.0 4.6875 15.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_3686bdf5cacc7fd2d461abc91c79a739c715d14a"
+	 position="21.0 5.3125 15.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_3686bdf5cacc7fd2d461abc91c79a739c715d14a"
+	 position="21.0 5.9375 15.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_3686bdf5cacc7fd2d461abc91c79a739c715d14a"
+	 position="21.0 6.5625 15.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+<a-box id="ID_3bb02ed3b2171a7b99af10db17ff1657730d6208"
+	 position="13.0 5.625 13.0"
+	 width="1.0"
+	 height="1.0"
+	 depth="1.0"
+	 color="#99FFCC"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_3bb02ed3b2171a7b99af10db17ff1657730d6208"
+	 position="13.0 6.1875 13.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_3bb02ed3b2171a7b99af10db17ff1657730d6208"
+	 position="13.0 5.6875 18.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_3bb02ed3b2171a7b99af10db17ff1657730d6208"
+	 position="21.0 4.6875 10.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_3bb02ed3b2171a7b99af10db17ff1657730d6208"
+	 position="21.0 4.6875 15.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_3bb02ed3b2171a7b99af10db17ff1657730d6208"
+	 position="21.0 5.3125 15.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_3bb02ed3b2171a7b99af10db17ff1657730d6208"
+	 position="21.0 5.9375 15.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_3bb02ed3b2171a7b99af10db17ff1657730d6208"
+	 position="21.0 6.5625 15.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+<a-box id="ID_026b1fce88be0780e55b2b26b81a538c48bcb1b5"
+	 position="13.0 6.0 18.0"
+	 width="1.0"
+	 height="0.5"
+	 depth="1.0"
+	 color="#99FFCC"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_026b1fce88be0780e55b2b26b81a538c48bcb1b5"
+	 position="13.0 6.1875 13.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_026b1fce88be0780e55b2b26b81a538c48bcb1b5"
+	 position="13.0 5.6875 18.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_026b1fce88be0780e55b2b26b81a538c48bcb1b5"
+	 position="21.0 4.6875 10.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_026b1fce88be0780e55b2b26b81a538c48bcb1b5"
+	 position="21.0 4.6875 15.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_026b1fce88be0780e55b2b26b81a538c48bcb1b5"
+	 position="21.0 5.3125 15.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_026b1fce88be0780e55b2b26b81a538c48bcb1b5"
+	 position="21.0 5.9375 15.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_026b1fce88be0780e55b2b26b81a538c48bcb1b5"
+	 position="21.0 6.5625 15.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+<a-box id="ID_b54d8108959da08d73eb3a5dd1c4b860f71280ee"
+	 position="13.0 5.375 18.0"
+	 width="1.0"
+	 height="0.5"
+	 depth="1.0"
+	 color="#99FFCC"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_b54d8108959da08d73eb3a5dd1c4b860f71280ee"
+	 position="13.0 6.1875 13.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_b54d8108959da08d73eb3a5dd1c4b860f71280ee"
+	 position="13.0 5.6875 18.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_b54d8108959da08d73eb3a5dd1c4b860f71280ee"
+	 position="21.0 4.6875 10.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_b54d8108959da08d73eb3a5dd1c4b860f71280ee"
+	 position="21.0 4.6875 15.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_b54d8108959da08d73eb3a5dd1c4b860f71280ee"
+	 position="21.0 5.3125 15.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_b54d8108959da08d73eb3a5dd1c4b860f71280ee"
+	 position="21.0 5.9375 15.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_b54d8108959da08d73eb3a5dd1c4b860f71280ee"
+	 position="21.0 6.5625 15.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+<a-box id="ID_9d2225a56e5d8d2c17ab41f9b79fe15ce7454f70"
+	 position="21.0 4.375 10.0"
+	 width="1.0"
+	 height="0.5"
+	 depth="1.0"
+	 color="#99FFCC"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_9d2225a56e5d8d2c17ab41f9b79fe15ce7454f70"
+	 position="13.0 6.1875 13.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_9d2225a56e5d8d2c17ab41f9b79fe15ce7454f70"
+	 position="13.0 5.6875 18.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_9d2225a56e5d8d2c17ab41f9b79fe15ce7454f70"
+	 position="21.0 4.6875 10.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_9d2225a56e5d8d2c17ab41f9b79fe15ce7454f70"
+	 position="21.0 4.6875 15.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_9d2225a56e5d8d2c17ab41f9b79fe15ce7454f70"
+	 position="21.0 5.3125 15.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_9d2225a56e5d8d2c17ab41f9b79fe15ce7454f70"
+	 position="21.0 5.9375 15.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_9d2225a56e5d8d2c17ab41f9b79fe15ce7454f70"
+	 position="21.0 6.5625 15.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+<a-box id="ID_993687807a722d6e3716b783eed380a8fe6d5f1a"
+	 position="21.0 5.0 10.0"
+	 width="1.0"
+	 height="0.5"
+	 depth="1.0"
+	 color="#99FFCC"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_993687807a722d6e3716b783eed380a8fe6d5f1a"
+	 position="13.0 6.1875 13.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_993687807a722d6e3716b783eed380a8fe6d5f1a"
+	 position="13.0 5.6875 18.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_993687807a722d6e3716b783eed380a8fe6d5f1a"
+	 position="21.0 4.6875 10.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_993687807a722d6e3716b783eed380a8fe6d5f1a"
+	 position="21.0 4.6875 15.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_993687807a722d6e3716b783eed380a8fe6d5f1a"
+	 position="21.0 5.3125 15.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_993687807a722d6e3716b783eed380a8fe6d5f1a"
+	 position="21.0 5.9375 15.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_993687807a722d6e3716b783eed380a8fe6d5f1a"
+	 position="21.0 6.5625 15.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+<a-box id="ID_64b95cf5d66f5f76fa9b5f1b8bca5444dfec12a7"
+	 position="21.0 6.875 15.0"
+	 width="1.0"
+	 height="0.5"
+	 depth="1.0"
+	 color="#99FFCC"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_64b95cf5d66f5f76fa9b5f1b8bca5444dfec12a7"
+	 position="13.0 6.1875 13.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_64b95cf5d66f5f76fa9b5f1b8bca5444dfec12a7"
+	 position="13.0 5.6875 18.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_64b95cf5d66f5f76fa9b5f1b8bca5444dfec12a7"
+	 position="21.0 4.6875 10.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_64b95cf5d66f5f76fa9b5f1b8bca5444dfec12a7"
+	 position="21.0 4.6875 15.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_64b95cf5d66f5f76fa9b5f1b8bca5444dfec12a7"
+	 position="21.0 5.3125 15.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_64b95cf5d66f5f76fa9b5f1b8bca5444dfec12a7"
+	 position="21.0 5.9375 15.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_64b95cf5d66f5f76fa9b5f1b8bca5444dfec12a7"
+	 position="21.0 6.5625 15.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+<a-box id="ID_ea45cd1634bcc4f63d6fb871c7c96da188e63927"
+	 position="21.0 6.25 15.0"
+	 width="1.0"
+	 height="0.5"
+	 depth="1.0"
+	 color="#99FFCC"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_ea45cd1634bcc4f63d6fb871c7c96da188e63927"
+	 position="13.0 6.1875 13.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_ea45cd1634bcc4f63d6fb871c7c96da188e63927"
+	 position="13.0 5.6875 18.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_ea45cd1634bcc4f63d6fb871c7c96da188e63927"
+	 position="21.0 4.6875 10.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_ea45cd1634bcc4f63d6fb871c7c96da188e63927"
+	 position="21.0 4.6875 15.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_ea45cd1634bcc4f63d6fb871c7c96da188e63927"
+	 position="21.0 5.3125 15.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_ea45cd1634bcc4f63d6fb871c7c96da188e63927"
+	 position="21.0 5.9375 15.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_ea45cd1634bcc4f63d6fb871c7c96da188e63927"
+	 position="21.0 6.5625 15.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+<a-box id="ID_d82716da508c78dc309a03a27f238622af2a5a5b"
+	 position="21.0 5.625 15.0"
+	 width="1.0"
+	 height="0.5"
+	 depth="1.0"
+	 color="#99FFCC"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_d82716da508c78dc309a03a27f238622af2a5a5b"
+	 position="13.0 6.1875 13.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_d82716da508c78dc309a03a27f238622af2a5a5b"
+	 position="13.0 5.6875 18.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_d82716da508c78dc309a03a27f238622af2a5a5b"
+	 position="21.0 4.6875 10.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_d82716da508c78dc309a03a27f238622af2a5a5b"
+	 position="21.0 4.6875 15.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_d82716da508c78dc309a03a27f238622af2a5a5b"
+	 position="21.0 5.3125 15.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_d82716da508c78dc309a03a27f238622af2a5a5b"
+	 position="21.0 5.9375 15.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_d82716da508c78dc309a03a27f238622af2a5a5b"
+	 position="21.0 6.5625 15.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+<a-box id="ID_ecb8d355f74d56512be5ed3985e8f92d3e7099cc"
+	 position="21.0 5.0 15.0"
+	 width="1.0"
+	 height="0.5"
+	 depth="1.0"
+	 color="#99FFCC"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_ecb8d355f74d56512be5ed3985e8f92d3e7099cc"
+	 position="13.0 6.1875 13.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_ecb8d355f74d56512be5ed3985e8f92d3e7099cc"
+	 position="13.0 5.6875 18.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_ecb8d355f74d56512be5ed3985e8f92d3e7099cc"
+	 position="21.0 4.6875 10.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_ecb8d355f74d56512be5ed3985e8f92d3e7099cc"
+	 position="21.0 4.6875 15.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_ecb8d355f74d56512be5ed3985e8f92d3e7099cc"
+	 position="21.0 5.3125 15.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_ecb8d355f74d56512be5ed3985e8f92d3e7099cc"
+	 position="21.0 5.9375 15.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_ecb8d355f74d56512be5ed3985e8f92d3e7099cc"
+	 position="21.0 6.5625 15.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+<a-box id="ID_a3aecef7682203351b82eeb5c8e2cfdd5a50657e"
+	 position="21.0 4.375 15.0"
+	 width="1.0"
+	 height="0.5"
+	 depth="1.0"
+	 color="#99FFCC"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_a3aecef7682203351b82eeb5c8e2cfdd5a50657e"
+	 position="13.0 6.1875 13.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_a3aecef7682203351b82eeb5c8e2cfdd5a50657e"
+	 position="13.0 5.6875 18.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_a3aecef7682203351b82eeb5c8e2cfdd5a50657e"
+	 position="21.0 4.6875 10.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_a3aecef7682203351b82eeb5c8e2cfdd5a50657e"
+	 position="21.0 4.6875 15.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_a3aecef7682203351b82eeb5c8e2cfdd5a50657e"
+	 position="21.0 5.3125 15.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_a3aecef7682203351b82eeb5c8e2cfdd5a50657e"
+	 position="21.0 5.9375 15.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+
+<a-box id="ID_a3aecef7682203351b82eeb5c8e2cfdd5a50657e"
+	 position="21.0 6.5625 15.0"
+	 width="1.0"
+	 height="0.125"
+	 depth="1.0"
+	 color="#000000"
+	 shader="flat"
+	 flat-shading="true">
+</a-box>
+		 </a-scene>
+ 	 </body>
+</html>

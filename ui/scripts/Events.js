@@ -93,7 +93,6 @@ var events = (function() {
 				//-> output on console
 				let eventListenerArray = eventMap.get(this);
 				if(eventListenerArray === undefined){
-					console.trace();
 					if(logEvent.text){
 						console.log("NO LOGGER for " + this.type + " subscribed! - " + logEvent.text);
 					} else {
